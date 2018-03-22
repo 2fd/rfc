@@ -8,10 +8,10 @@
     ],
     "properties": {
         "title": {
-            "type":"string",
+            "type": "string",
             "description": "A title for the form."
         },
-        "description":  {
+        "description": {
             "type": "string",
             "description": "A description for the form. [CommonMark syntax](http://spec.commonmark.org/) MAY be used for rich text representation."
         },
@@ -177,35 +177,40 @@
                         "description": "Object used to define when I should apply the changes."
                     },
                     "changes": {
-                        "$id": "#Change",
-                        "type": "object",
-                        "description": "This object allows you to apply changes to a named component or Form Object based on the information submitted by the user.",
-                        "properties": {
-                            "name": {
-                                "$id": "#Change/properties/name",
-                                "type": "string",
-                                "description": "The name of the input or the section to which the change will be applied."
-                            },
-                            "hint": {
-                                "$id": "#Change/properties/hint",
-                                "type": "string",
-                                "description": "Message that will replace the initial `hint` of the section or the input."
-                            },
-                            "warning": {
-                                "$id": "#Change/properties/warning",
-                                "type": "string",
-                                "description": "Message that will replace the initial `warning` of the section or the input."
-                            },
-                            "error": {
-                                "$id": "#Change/properties/error",
-                                "type": "string",
-                                "description": "Message that will replace the initial `error` of the section or the input."
-                            },
-                            "customProps": {
-                                "$id": "#Change/properties/customProps",
-                                "type": "object"
+                        "$id": "#Validation/properties/changes",
+                        "type": "array",
+                        "items": {
+                            "$id": "#Change",
+                            "type": "object",
+                            "description": "This object allows you to apply changes to a named component or Form Object based on the information submitted by the user.",
+                            "properties": {
+                                "name": {
+                                    "$id": "#Change/properties/name",
+                                    "type": "string",
+                                    "description": "The name of the input or the section to which the change will be applied."
+                                },
+                                "hint": {
+                                    "$id": "#Change/properties/hint",
+                                    "type": "string",
+                                    "description": "Message that will replace the initial `hint` of the section or the input."
+                                },
+                                "warning": {
+                                    "$id": "#Change/properties/warning",
+                                    "type": "string",
+                                    "description": "Message that will replace the initial `warning` of the section or the input."
+                                },
+                                "error": {
+                                    "$id": "#Change/properties/error",
+                                    "type": "string",
+                                    "description": "Message that will replace the initial `error` of the section or the input."
+                                },
+                                "customProps": {
+                                    "$id": "#Change/properties/customProps",
+                                    "type": "object"
+                                }
                             }
-                        }
+                        },
+                        "default": []
                     }
                 }
             },
