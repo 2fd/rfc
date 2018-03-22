@@ -141,6 +141,7 @@ Field Name | Type | Description
 ---|:---:|---
 name | `string` | **REQUIRED** Name for the input and represents the position in the data by dot notation.
 type | `string` | **REQUIRED** It is a string that is defined by the service and represents the data type that will be sent in as data.
+label | `string` | Reference for the user.
 hint | `string` | A relevant note that the third-party want to communicate to de the user.
 warning | `string` | An warning that the third-party want to communicate to de the user, but that does not prevent submit the form data.
 error | `string` | An error that prevents sending the form.used for rich text representation.

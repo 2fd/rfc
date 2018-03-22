@@ -110,6 +110,11 @@
                                     "description": "**REQUIRED** It is a string that is defined by the service and represents the data type that will be sent in as data.",
                                     "default": "text"
                                 },
+                                "label": {
+                                    "$id": "#Input/properties/label",
+                                    "type": "string",
+                                    "description": "Reference for the user."
+                                },
                                 "hint": {
                                     "$id": "#Input/properties/hint",
                                     "type": "string",

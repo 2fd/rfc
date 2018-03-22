@@ -116,6 +116,11 @@ export interface Input {
     type: string;
 
     /**
+     * Reference for the user.
+     */
+    label: string;
+
+    /**
      * A relevant note that the third-party want to communicate to de the user.
      */
     hint?: string;
