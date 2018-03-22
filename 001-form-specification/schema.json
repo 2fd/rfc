@@ -1,0 +1,229 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://2fd.github.io/rfc/001-form-specification/schema.json#",
+    "type": "object",
+    "description": "This is the root document object",
+    "required": [
+        "sections"
+    ],
+    "properties": {
+        "title": {
+            "type":"string",
+            "description": "A title for the form."
+        },
+        "description":  {
+            "type": "string",
+            "description": "A description for the form. [CommonMark syntax](http://spec.commonmark.org/) MAY be used for rich text representation."
+        },
+        "hint": {
+            "type": "string",
+            "description": "A relevant note that the third-party want to communicate to de the user. [CommonMark syntax](http://spec.commonmark.org/) MAY be used for rich text representation."
+        },
+        "warning": {
+            "type": "string",
+            "description": "An warning that the third-party want to communicate to de the user, but that does not prevent submit the form data. [CommonMark syntax](http://spec.commonmark.org/) MAY be used for rich text representation."
+        },
+        "error": {
+            "type": "string",
+            "description": "An error that prevents sending the form. [CommonMark syntax](http://spec.commonmark.org/) MAY be used for rich text representation."
+        },
+        "sections": {
+            "type": "array",
+            "description": "A list of sections for the form",
+            "items": {
+                "$ref": "#Section"
+            },
+            "default": []
+        },
+        "validations": {
+            "type": "array",
+            "description": "A list of validation that allow to the third-party to modify the form based on data completed by the user",
+            "items": {
+                "$ref": "#Validation"
+            },
+            "default": []
+        }
+    },
+    "definitions": {
+        "Section": {
+            "$id": "#Section",
+            "type": "string",
+            "description": "This object define each section on the form",
+            "properties": {
+                "name": {
+                    "$id": "#Section/properties/name",
+                    "type": "string",
+                    "description": "Name for the section. It is **NOT REQUIRED** but there **SHOULD NOT** be two sections with the same"
+                },
+                "title": {
+                    "$id": "#Section/properties/title",
+                    "type": "string",
+                    "description": "A title for the section."
+                },
+                "description": {
+                    "$id": "#Section/properties/description",
+                    "type": "string",
+                    "description": "A description for the section. [CommonMark syntax](http://spec.commonmark.org/) MAY be used for rich text representation."
+                },
+                "hint": {
+                    "$id": "#Section/properties/hint",
+                    "type":"string",
+                    "description": "A relevant note that the third-party want to communicate to de the user. [CommonMark syntax](http://spec.commonmark.org/) MAY be used for rich text representation."
+                },
+                "warning": {
+                    "$id": "#Section/properties/warning",
+                    "type": "string",
+                    "description": "An warning that the third-party want to communicate to de the user, but that does not prevent submit the form data. [CommonMark syntax](http://spec.commonmark.org/) MAY be used for rich text representation."
+                },
+                "error": {
+                    "$id": "#Section/properties/error",
+                    "type": "string",
+                    "description": "An error that prevents sending the form. [CommonMark syntax](http://spec.commonmark.org/) MAY be used for rich text representation."
+                },
+                "hidden": {
+                    "$id": "#Section/properties/hidden",
+                    "type": "boolean",
+                    "description": "Defines if the section is visible."
+                },
+                "hiddenWhere": {
+                    "$id": "#Section/properties/hiddenWhere",
+                    "type": "object",
+                    "description": "Defines if the section is visible depending on the data loaded by the user *(it is ignored if hidden is true)*"
+                },
+                "disabled": {
+                    "$id": "#Section/properties/disabled",
+                    "type": "boolean",
+                    "description": "Defines if the section is disabled."
+                },
+                "disabledWhere": {
+                    "$id": "#Section/properties/disabledWhere",
+                    "type": "object",
+                    "description": "Defines if the section is disabled depending on the data loaded by the user *(it is ignored if disabled is true)*."
+                },
+                "inputs": {
+                    "$id": "#Section/properties/inputs",
+                    "type": "array",
+                    "description": "A list of inputs that appear in the section of the form.",
+                    "items": {
+                        "$ref": "#Input"
+                    },
+                    "default": []
+                }
+            }
+        },
+        "Input": {
+            "$id": "#Input",
+            "type": "object",
+            "description": "This object define each input for a section",
+            "required": [
+                "name",
+                "type"
+            ],
+            "properties": {
+                "name": {
+                    "$id": "#Input/properties/name",
+                    "type": "string",
+                    "description": "**REQUIRED** Name for the input and represents the position in the data by dot notation",
+                    "default": ""
+                },
+                "type": {
+                    "$id": "#Input/properties/type",
+                    "type": "string",
+                    "description": "**REQUIRED** It is a string that is defined by the service and represents the data type that will be sent in as data.",
+                    "default": "text"
+                },
+                "hint": {
+                    "$id": "#Input/properties/hint",
+                    "type": "string",
+                    "description": "A relevant note that the third-party want to communicate to de the user."
+                },
+                "warning": {
+                    "$id": "#Input/properties/warning",
+                    "type": "string",
+                    "description": "An warning that the third-party want to communicate to de the user, but that does not prevent submit the form data."
+                },
+                "error": {
+                    "$id": "#Input/properties/error",
+                    "type": "string",
+                    "description": "An error that prevents sending the form."
+                },
+                "hidden": {
+                    "$id": "#Input/properties/hidden",
+                    "type": "boolean",
+                    "description": "Defines if the section is visible."
+                },
+                "hiddenWhere": {
+                    "$id": "#Input/properties/hiddenWhere",
+                    "type": "object",
+                    "description": "Defines if the section is visible depending on the data loaded by the user *(it is ignored if hidden is true)*."
+                },
+                "disabled": {
+                    "$id": "#Input/properties/disabled",
+                    "type": "boolean",
+                    "description": "Defines if the section is disabled."
+                },
+                "disabledWhere": {
+                    "$id": "#Input/properties/disabledWhere",
+                    "type": "object",
+                    "description": "Defines if the section is disabled depending on the data loaded by the user *(it is ignored if disabled is true)*."
+                },
+                "customProps": {
+                    "$id": "#Input/properties/customProps",
+                    "type": "object",
+                    "description": "An object that is defined by the service and that the third-party can use to configure the behavior of the input."
+                }
+            }
+        },
+        "Validation": {
+            "$id": "#Validation",
+            "type": "object",
+            "description": "This object allows you to apply changes to a named component or Form Object based on the information submitted by the user",
+            "properties": {
+                "where": {
+                    "$id": "#Validation/properties/where",
+                    "type": "object",
+                    "description": "Object used to define when I should apply the changes."
+                },
+                "changes": {
+                    "$id": "#Validation/properties/changes",
+                    "type": "array",
+                    "description": "A list of changes.",
+                    "items": {
+                        "$ref": "#Change"
+                    }
+                }
+            }
+        },
+        "Change": {
+            "$id": "#Change",
+            "type": "object",
+            "description": "This object allows you to apply changes to a named component or Form Object based on the information submitted by the user.",
+            "properties": {
+                "name": {
+                    "$id": "#Change/properties/name",
+                    "type":"string",
+                    "description": "The name of the input or the section to which the change will be applied."
+                },
+                "hint": {
+                    "$id": "#Change/properties/hint",
+                    "type": "string",
+                    "description": "Message that will replace the initial `hint` of the section or the input."
+                },
+                "warning": {
+                    "$id": "#Change/properties/warning",
+                    "type": "string",
+                    "description": "Message that will replace the initial `warning` of the section or the input."
+                },
+                "error": {
+                    "$id": "#Change/properties/error",
+                    "type": "string",
+                    "description": "Message that will replace the initial `error` of the section or the input."
+                },
+                "customProps": {
+                    "$id": "#Change/properties/customProps",
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
