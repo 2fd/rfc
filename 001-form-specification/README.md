@@ -17,10 +17,6 @@ The Form Specification defines a standard, language-independent, human-readable 
     * [Match Object](#match-object)
     * [Change Object](#change-object)
 * [Flow](#flow)
-* [Demo](#demo)
-  * [Live Editor](#live-editor)
-  * [Pure React implementation](#pure-react-implementation)
-  * [Material UI implementation](#material-ui-implementation)
 
 ### Format
 
@@ -330,8 +326,4 @@ customProps:
 
 This is the recommended flow to interact with form data submission
 
-> [Recommended flow](./images/form-specification-flow.svg)
-
-## Demo
-
-> Soon...
+> ![Recommended flow](./images/form-specification-flow.svg)
