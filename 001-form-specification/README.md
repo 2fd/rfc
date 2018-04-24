@@ -226,6 +226,69 @@ changes:
 
 ```
 
+#### Match Object
+
+A Match object is a customizable super set of a [MongoDB Query](https://docs.mongodb.com/manual/reference/operator/query).
+Each service can offer its own operators to interact with the information.
+In any case, the following extensions are recommended:
+
+##### Match Object `$empty` operator
+
+```javascript
+    // Syntax:
+    { field: { $empty: <boolean> } }
+```
+
+When <boolean> is true, `$empty` matches the documents that not contain the field, that field value is `null`, `undefined`, `""` (empty string), `[]` (empty array) or `NaN`. If <boolean> is false, matches all the rest.
+
+
+##### Match Object `$empty` example
+
+```json
+
+{
+   "user.name": {
+       "$empty": true
+   }
+}
+
+```
+
+```yaml
+
+user.age:
+    $empty: true
+
+```
+
+##### Match Object `$falsy` operator
+
+```javascript
+    // Syntax:
+    { field: { $falsy: <boolean> } }
+```
+
+When <boolean> is true, `$falsy` matches the documents that not contain the field, that field value is `null`, `undefined`, `""` (empty string), `[]` (empty array), `false`, `0`, or `NaN`. If <boolean> is false, matches all the rest.
+
+##### Match Object `$falsy` example
+
+```json
+
+{
+   "user.name": {
+       "$falsy": true
+   }
+}
+
+```
+
+```yaml
+
+user.age:
+    $falsy: true
+
+```
+
 #### Change Object
 
 This object allows you to apply changes to a named component or Form Object based on the information submitted by the user.
@@ -265,7 +328,9 @@ customProps:
 
 ## Flow
 
-> Soon...
+This is the recommended flow to interact with form data submission
+
+> [Recommended flow](./images/form-specification-flow.svg)
 
 ## Demo
 
